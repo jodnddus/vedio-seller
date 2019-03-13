@@ -1,11 +1,18 @@
-import react from "react";
+import React from 'react';
+import { Switch, BrowserRouter as Router, Route} from "react-router-dom"
+import Home from './Home';
+import DynamicPage from './DynamicPage';
 
-class App extends react.Component {
-    render() {
-        return (
-            <h1>Hi!</h1>
-        )
-    }
-}
-
-export default App;
+const App = () => {
+    return (
+      <Router>
+        <div>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/dynamic" component={DynamicPage} />
+          </Switch>
+        </div>
+      </Router>
+    );
+  };
+  export default App;
