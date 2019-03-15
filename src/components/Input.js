@@ -1,14 +1,13 @@
-import react, { Componenet } from 'react';
+import React from 'react';
 
-class Input extends Componenet {
-    render() {
-        return (
-            <div>
-                <label>aaa</label>
-                <input type="text"/>
-            </div>
-        );
-    }
+const Input = (props) => {
+    return (
+        <div id="labels">
+            <label>{props.labelName}</label>
+            <br />
+            <input type={props.inputType} placeholder={props.inputPlaceholder}/>
+        </div>
+    );
 }
 
 export default Input;

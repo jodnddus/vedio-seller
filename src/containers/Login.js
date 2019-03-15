@@ -31,10 +31,14 @@ class Login extends Component {
         return (
             <div className="LoginPanel">
                 <h1>VEDIO-SELLER <span role="img" aria-label="movie">🎬</span></h1>
-                <Input></Input>
+                <Input labelName="Email" inputType="text" inputPlaceholder="Email"/>
+                <Input labelName="Password" inputType="text" inputPlaceholder="Password"/>
+                <br />
+                <Input labelName="Login" inputType="Button" className="LoginBtn"/>
+                <Input labelName="Login" inputType="Button" className="LoginBtn"/>
                 <GoogleLogin 
                     clientId="828024227175-bp17dp2hvkuigp5ut7477p700hpha5ji.apps.googleusercontent.com"
-                    buttonText="Google"
+                    buttonText="Sign in with Google"
                     onSuccess={this.GoogleresponseSuccess}
                     onFailure={this.GoogleresponseFail}
                     />
