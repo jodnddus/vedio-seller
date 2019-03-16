@@ -2,10 +2,10 @@ import React from 'react';
 
 const Input = (props) => {
     return (
-        <div id="labels">
+        <div className="inputs">
             <label>{props.labelName}</label>
             <br />
-            <input type={props.inputType} placeholder={props.inputPlaceholder}/>
+            <input type={props.inputType} placeholder={props.inputPlaceholder} className="inputlabels"/>
         </div>
     );
 }
