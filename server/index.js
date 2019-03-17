@@ -1,14 +1,17 @@
-const Koa = require('koa');
-const serve = require('koa-static');
+const express = require('express');
 const path = require('path');
-const fs = require('fs');
-const app = new Koa();
+const os = require('os');
 
-const indexHtml = fs.readFileSync(path.resolve(__dirname, '../build/index.html'), { encoding: 'utf-8' });
+const app = express();
+const PORT = process.env.PORT || 4000;
 
-app.use(serve(path.resolve(__dirname, '../build')));
-app.use(ctx => {
-    ctx.body =  indexHtml;
+app.use(express.static(path.resolve(__dirname, '../build')));
+
+app.get("/api/getUsername", (req, res, next) => {
+    res.send({username: os.userInfo().username});
 });
 
-app.listen(3030);
+
+app.listen(PORT, () => {
+    console.log(`✅ listening on https://localhost:${PORT}`)
+});
