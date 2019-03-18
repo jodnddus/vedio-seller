@@ -14,6 +14,14 @@ class Login extends Component {
     }
 
     render() {
+        function signinClickListener() {
+            console.log("signinClickListener");
+        }
+
+        function signiupClickListener() {
+            console.log("signiupClickListener");
+        }
+
         return (
             <div className="LoginPanel">
                 <h1>VEDIO-SELLER <span role="img" aria-label="movie">🎬</span></h1>
@@ -22,8 +30,8 @@ class Login extends Component {
                     <Input labelName="Password" inputType="text" inputPlaceholder="Password"/>
                 </div>
                 <div id="button">
-                    <Button value="Sign In" className="btns"/>
-                    <Button value="Sign Up" className="btns"/>
+                    <Button value="Sign In" className="btns" handleClick={signinClickListener}/>
+                    <Button value="Sign Up" className="btns" handleClick={signiupClickListener}/>
                 </div>
             </div>
         );  
