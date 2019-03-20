@@ -4,9 +4,9 @@ import './Video.css'
 
 const Video = () => {
     return (
-        <div>
+        <div className="videoItem">
             <img src={testimg} alt="hello jpg" />
-            <h1>$38.99</h1>
+            <h1>$38.00</h1>
         </div>
     );
 }
