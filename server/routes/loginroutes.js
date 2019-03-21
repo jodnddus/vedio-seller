@@ -11,12 +11,13 @@ var connection = mysql.createConnection({
 connection.connect();
 
 exports.register = function(req, res) {
-    connection.query('select * from users', function (error, results, fields) {
+    console.log(req);
+    /*connection.query('select * from users', function (error, results, fields) {
         if(error) {
             console.log(error);
         }
         console.log(results);
-    });
+    });*/
 }
 
 exports.register(); 
