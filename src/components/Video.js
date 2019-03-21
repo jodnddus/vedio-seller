@@ -1,6 +1,6 @@
 import React from 'react';
-import testimg from './test.jpg';
-import './Video.css'
+import testimg from './style/test.jpg';
+import './style/Video.css'
 
 const Video = () => {
     return (
