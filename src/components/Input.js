@@ -5,7 +5,7 @@ const Input = (props) => {
         <div className="inputs">
             <label>{props.labelName}</label>
             <br />
-            <input type={props.inputType} placeholder={props.inputPlaceholder} className="inputlabels"/>
+            <input type={props.inputType} placeholder={props.inputPlaceholder} onChange={props.onChange} className="inputlabels"/>
         </div>
     );
 }
