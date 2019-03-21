@@ -1,0 +1,42 @@
+body {
+    background-color: #f5f9fc;
+    text-align: center;
+}
+.LoginPanel {
+    display: inline-block;
+    margin-top: 7rem;
+    background-color: white;
+    border-radius: 1rem;
+    padding: 3rem;
+}
+#input {
+    text-align: left;
+}
+.inputlabels {
+    width: 90%;
+    border-style: none;
+    border: 1px solid rgba(160, 162, 165, 0.5);
+    border-radius: 5px;
+    padding: 0.5rem;
+    font-size: 1rem;
+    outline: none;
+}
+#button {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0.5rem;
+    justify-content: center;
+}
+.buttons {
+    border-radius: 5px;
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    outline: none;
+}
+
+.inputs {
+    margin-top: 1rem;
+}

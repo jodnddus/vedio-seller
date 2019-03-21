@@ -1,0 +1,10 @@
+#container {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#header {
+    padding: 1rem;
+    font-size: 5rem;
+    text-align: left;
+}
