@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Input from '../components/Input';
 import Button from '../components/Button';
+import axios from 'axios';
 import './style/Login.css'
 
 class Login extends Component {
@@ -23,7 +24,24 @@ class Login extends Component {
         console.log('Username: ' + this.state.username);
         console.log('Email: ' + this.state.email);
         console.log('Password: ' + this.state.password);
-        //document.location.href = '/register';
+
+        var data = {
+            "username": this.state.username,
+            "email": this.state.email,
+            "password": this.state.password
+        }
+
+        try {
+            axios({
+                method: 'post',
+                url: 'http://localhost:4000/register',
+                data: JSON.stringify(data),
+            }).then((res) => {
+                console.log(res);
+            })
+        } catch (error) {
+            console.error(`Error is: ${error}`);
+        }
     }
 
     signiupClickListener() {

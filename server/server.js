@@ -19,8 +19,10 @@ app.get("/api/getUsername", (req, res, next) => {
 });
 
 app.all('/register', (req, res) => {
-    console.log(req);
+    console.log(req.body);
 })
+
+//db 데이터 삽입 작업 해야함
 
 app.listen(PORT, () => {
     console.log(`✅ listening on http://localhost:${PORT}`)
