@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const os = require('os');
 const bodyParser = require('body-parser');
-const login = require('./routes/loginroutes');
+const sql = require('./database/db_sql')();
 
 
 const app = express();
@@ -18,9 +18,9 @@ app.get("/api/getUsername", (req, res, next) => {
     res.send({username: os.userInfo().username});
 });
 
-app.all('/register', (req, res) => {
-    console.log(req.body);
-})
+//app.post('/register', login.register());
+
+sql.register();
 
 //db 데이터 삽입 작업 해야함
 
