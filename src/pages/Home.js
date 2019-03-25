@@ -6,7 +6,7 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <div id="header">VIDEO-SELLER <span role="img" aria-label="film">🎬</span></div>
+                <div id="header">VIDEO-SELLER<span role="img" aria-label="film"> 🎬</span></div>
                 <div id="container">
                     <Video />
                     <Video />

@@ -18,9 +18,17 @@ app.get("/api/getUsername", (req, res, next) => {
     res.send({username: os.userInfo().username});
 });
 
-//app.post('/register', login.register());
+app.post('/register', (req, res) => {
+    var data = {
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password
+    }
 
-sql.register();
+    sql.register(data);
+});
+
+//sql.register();
 
 //db 데이터 삽입 작업 해야함
 
