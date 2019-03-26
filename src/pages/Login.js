@@ -59,17 +59,15 @@ class Login extends Component {
         return (
             <div className="LoginPanel">
                 <h1>VEDIO-SELLER <span role="img" aria-label="movie">🎬</span></h1>
-                <form>
-                    <div id="input">
-                        <Input labelName="Username" inputType="text" inputPlaceholder="Username" onChange={this.usernameChange}/>
-                        <Input labelName="Email" inputType="email" inputPlaceholder="Email" onChange={this.emailChange}/>
-                        <Input labelName="Password" inputType="password" inputPlaceholder="Password" onChange={this.passwordChange}/>
-                    </div>
-                    <div id="button">
-                        <Button value="Sign In" className="btns" handleClick={this.signinClickListener}/>
-                        <Button value="Sign Up" className="btns" handleClick={this.signiupClickListener}/>
-                    </div>
-                </form>
+                <div id="input">
+                    <Input labelName="Username" inputType="text" inputPlaceholder="Username" onChange={this.usernameChange}/>
+                    <Input labelName="Email" inputType="email" inputPlaceholder="Email" onChange={this.emailChange}/>
+                    <Input labelName="Password" inputType="password" inputPlaceholder="Password" onChange={this.passwordChange}/>
+                </div>
+                <div id="button">
+                    <Button value="Sign In" className="btns" handleClick={this.signinClickListener}/>
+                    <Button value="Sign Up" className="btns" handleClick={this.signiupClickListener}/>
+                </div>
             </div>
         );  
     }

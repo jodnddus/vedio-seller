@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const os = require('os');
 const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
 const sql = require('./database/db_sql')();
 
 
@@ -24,6 +25,11 @@ app.post('/register', (req, res) => {
         email: req.body.email,
         password: req.body.password
     }
+
+    let hash = bcrypt.hashSync(data.password, 10);
+    data.password = hash;
+
+    console.log(data);
 
     sql.register(data);
 });

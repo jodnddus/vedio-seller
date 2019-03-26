@@ -4,7 +4,7 @@ module.exports = () => {
     return {
         register: function(data) {
             pool.getConnection((err, con) => {
-                var sql = `insert into users value("${data.email}", "${data.password}")`;
+                var sql = `INSERT INTO users VALUES("${data.email}", "${data.password}", "${data.username}")`;
                 con.query(sql);
             });
         }
