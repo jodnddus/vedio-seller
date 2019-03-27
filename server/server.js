@@ -26,18 +26,24 @@ app.post('/register', (req, res) => {
         password: req.body.password
     }
 
-    let hash = bcrypt.hashSync(data.password, 10);
-    data.password = hash;
+    try {
+        //비밀번호 암호화
+        let hash = bcrypt.hashSync(data.password, 10);
+        data.password = hash;
+        console.log(data);
 
-    console.log(data);
-
-    sql.register(data);
+        //sql문 실행
+        sql.register(data);
+        res.sendStatus(200);
+    } catch (error) {
+        console.log(`Error is ${error}`);
+    }
 });
 
-//sql.register();
-
-//db 데이터 삽입 작업 해야함
-
+app.post('/login', (req, res) => {
+    //로그인 검증 작업 구현 해야 함
+    res.sendStatus(200);
+})
 app.listen(PORT, () => {
     console.log(`✅ listening on http://localhost:${PORT}`)
 });

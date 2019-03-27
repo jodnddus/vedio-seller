@@ -36,6 +36,21 @@ class Login extends Component {
         console.log('Username: ' + this.state.username);
         console.log('Email: ' + this.state.email);
         console.log('Password: ' + this.state.password);
+
+        try {
+            axios.post('http://localhost:4000/login', {
+                username: this.state.username,
+                email: this.state.email,
+                password: this.state.password
+            }).then((res) => {
+                console.log(res);
+                if(res.status === 200) {
+                    document.location.href = '/home';
+                }
+            });
+        } catch (error) {
+            console.log(`Error is ${error}`);
+        }
     }
 
     signiupClickListener() {
@@ -48,11 +63,12 @@ class Login extends Component {
                 username: this.state.username,
                 email: this.state.email,
                 password: this.state.password
-            })
+            }).then((res) => {
+                console.log(res);
+            });
         } catch (error) {
             console.error(`Error is: ${error}`);
         }
-        //document.location.href = '/register';
     }
 
     checkEmail(str) {
@@ -63,12 +79,12 @@ class Login extends Component {
     }
 
     alertPanel(pass) {
+        let element = document.querySelector('.alertPanel');
+
         if (pass === false) {
-            let element = document.querySelector('.alertPanel');
             element.classList.add('animated', 'slideInDown', 'faster');
             element.style.display = 'flex';
         } else if (pass === true) {
-            let element = document.querySelector('.alertPanel');
             element.style.display = 'none';
         }
     }
@@ -90,12 +106,12 @@ class Login extends Component {
         return (
             <div>
                 <Helmet>
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" />
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" />
                 </Helmet>
                 <div id="loginPage">
                     <div className="alertPanel">이메일 유효성 검증 실패</div>
                     <div className="LoginPanel">
-                        <h1>VEDIO-SELLER <span role="img" aria-label="movie">🎬</span></h1>
+                        <h1>VIDEO-SELLER <span role="img" aria-label="movie">🎬</span></h1>
                         <div id="input">
                             <Input labelName="Email" inputType="email" inputPlaceholder="Email" onChange={this.emailChange}/>
                             <Input labelName="Username" inputType="text" inputPlaceholder="Username" onChange={this.usernameChange}/>
