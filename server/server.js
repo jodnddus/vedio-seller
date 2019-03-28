@@ -42,6 +42,8 @@ app.post('/register', (req, res) => {
 
 app.post('/login', (req, res) => {
     //로그인 검증 작업 구현 해야 함
+    var result = sql.selectAllUsers();
+    result();
     res.sendStatus(200);
 })
 app.listen(PORT, () => {
