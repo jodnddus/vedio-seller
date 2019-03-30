@@ -6,5 +6,9 @@
 #header {
     padding: 1rem;
     font-size: 5rem;
-    text-align: left;
+    display: flex;
+    justify-content: space-between;
+}
+#menu {
+    margin: 5px;
 }

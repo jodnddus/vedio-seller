@@ -76,6 +76,8 @@ class Login extends Component {
         } catch (error) {
             console.error(`Error is: ${error}`);
         }
+
+        document.location.href = '/';
     }
 
     checkEmail(str) {
