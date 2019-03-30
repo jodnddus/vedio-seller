@@ -9,7 +9,8 @@ class Login extends Component {
     state = {
         username: '', 
         email: '', 
-        password: ''
+        password: '',
+        logined: false
     };
 
     constructor(props) {
@@ -22,12 +23,12 @@ class Login extends Component {
     }
 
     componentDidUpdate() {
-        if(this.state.email === '') {                                //없을 때
-            this.alertPanel(true);
+        if(this.state.email === '') {                               //없을 때
+            this.alertPanel('emailValidOrNoneInput');
         } else if(this.checkEmail(this.state.email) === true) {     //유효 할 때
-            this.alertPanel(true);
+            this.alertPanel('emailValidOrNoneInput');
         } else if(this.checkEmail(this.state.email) === false) {    //이메일이 유효하지 않을 때
-            this.alertPanel(false);
+            this.alertPanel('emailFormNotValid', '이메일이 유효하지 않음');
         }
 
     }
@@ -43,9 +44,15 @@ class Login extends Component {
                 email: this.state.email,
                 password: this.state.password
             }).then((res) => {
-                console.log(res);
-                if(res.status === 200) {
+                if(res.data === `No result`) {
+                    this.alertPanel('noneResult', '일치하는 정보가 없음');
+                } else if (res.data === `No email: ${this.state.email}`) {
+                    this.alertPanel('noneEmail', '이메일이 일치하지 않음');
+                } else if (res.data === `No password: ${this.state.password}`) {
+                    this.alertPanel('nonePassword', '비밀번호가 일치하지 않음');
+                } else {
                     document.location.href = '/home';
+                    this.setState(this.state.logined = true);
                 }
             });
         } catch (error) {
@@ -78,14 +85,27 @@ class Login extends Component {
         else return false;
     }
 
-    alertPanel(pass) {
+    alertPanel(flag, msg) {
         let element = document.querySelector('.alertPanel');
 
-        if (pass === false) {
+        if (flag === 'emailFormNotValid') {
             element.classList.add('animated', 'slideInDown', 'faster');
             element.style.display = 'flex';
-        } else if (pass === true) {
+            element.textContent = msg;
+        } else if (flag === 'emailValidOrNoneInput') {
             element.style.display = 'none';
+        } else if (flag === 'noneEmail') {
+            element.classList.add('animated', 'slideInDown', 'faster');
+            element.style.display = 'flex';
+            element.textContent = msg;
+        } else if (flag === 'nonePassword') {
+            element.classList.add('animated', 'slideInDown', 'faster');
+            element.style.display = 'flex';
+            element.textContent = msg;
+        } else if (flag === 'noneResult') {
+            element.classList.add('animated', 'slideInDown', 'faster');
+            element.style.display = 'flex';
+            element.textContent = msg;
         }
     }
 
@@ -109,7 +129,7 @@ class Login extends Component {
                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" />
                 </Helmet>
                 <div id="loginPage">
-                    <div className="alertPanel">이메일 유효성 검증 실패</div>
+                    <div className="alertPanel"></div>
                     <div className="LoginPanel">
                         <h1>VIDEO-SELLER <span role="img" aria-label="movie">🎬</span></h1>
                         <div id="input">

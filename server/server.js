@@ -41,10 +41,29 @@ app.post('/register', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
+    res.set('Content-Type', 'text/plain');
+    var data = {
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password
+    }
+
     //로그인 검증 작업 구현 해야 함
-    var result = sql.selectAllUsers();
-    result();
-    res.sendStatus(200);
+    sql.login(data, (result) => {
+        if(result === `No result`) {
+            // res.sendStatus(403);
+            res.send(`No result`);
+        } else if (result === `No email: ${data.email}`) {
+            // res.sendStatus(403);
+            res.send(`No email: ${data.email}`);
+        } else if (result === `No password: ${data.password}`) {
+            // res.sendStatus(403);
+            res.send(`No password: ${data.password}`);
+        } else {
+            // res.sendStatus(200);
+            res.send(`Pass`);
+        }
+    });
 })
 app.listen(PORT, () => {
     console.log(`✅ listening on http://localhost:${PORT}`)
