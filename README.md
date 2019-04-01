@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -66,3 +67,9 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+=======
+# vedio-seller
+awesome vedio seller 🎬
+
+notion 👉 [To-dos](https://www.notion.so/vedioseller/To-dos-8fb8ccf964664ec7b668d74ccddf581b)
+>>>>>>> 067956066feb64f62da8f1b30addad4b30a1ff80
