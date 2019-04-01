@@ -12,3 +12,10 @@
 #menu {
     margin: 5px;
 }
+#slideTap {
+    width: 50px;
+    background-color: red;
+}
+#main {
+    display: flex;
+}
