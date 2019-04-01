@@ -1,0 +1,21 @@
+#container {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#header {
+    padding: 1rem;
+    font-size: 5rem;
+    display: flex;
+    justify-content: space-between;
+}
+#menu {
+    margin: 5px;
+}
+#slideTap {
+    width: 50px;
+    background-color: red;
+}
+#main {
+    display: flex;
+}
