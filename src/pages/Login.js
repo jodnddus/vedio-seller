@@ -52,7 +52,7 @@ class Login extends Component {
                     this.alertPanel('nonePassword', '비밀번호가 일치하지 않음');
                 } else {
                     document.location.href = '/home';
-                    this.setState(this.state.logined = true);
+                    this.setState({logined: true});
                 }
             });
         } catch (error) {
