@@ -1,13 +1,13 @@
 import React from 'react';
-import testimg from './style/test.jpg';
+import { Link } from 'react-router-dom';
 import './style/Video.css'
 
-const Video = (src, title, id) => {
+const Video = ({poster, title, id}) => {
     return (
-        <div className="videoItem" key={id}>
-            <img src={src} alt="hello jpg" />
+        <Link to={`/videos/${id}`}>
+            <img src={poster} alt="hello jpg" />
             <h1>{title}</h1>
-        </div>
+        </Link>
     );
 }
 

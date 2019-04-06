@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Video from './components/Video';
 import { Query } from 'react-apollo';
 import { GET_MOVIES } from '../queries';
@@ -11,29 +12,23 @@ class Home extends Component {
                 if(loading) return "loding"
                 if(error) return "error"
                 return (
-                    <div id="container">
-                        {data.videos.map(video => (
-                        <div key={video.id} className="videoItem">
-                            <img src={video.medium_cover_image} alt="hello jpg" />
-                            <h1>{video.title}</h1>
+                    <div>
+                        <div id="header">VIDEO-SELLER<span role="img" aria-label="film"> 🎬</span></div>
+                        <div id="container">
+                            {data.videos.map(video => (
+                                <div key={video.id} className="videoItem">
+                                    <Video
+                                        poster={video.medium_cover_image}
+                                        title={video.title}
+                                        id={video.id}
+                                    />
+                                </div>
+                            ))}  
                         </div>
-                        //<Video src={video.medium_cover_image} title={video.title} id={video.id} />
-                        ))}  
                     </div>
                 );
             }}
             </Query>
-
-            /*<div id="main">
-                <div>
-                    <div id="header">
-                        <div>VIDEO-SELLER<span role="img" aria-label="film"> 🎬</span></div>
-                        <span role="img" aria-label="menu" id="menu" onClick={this.menuClick}>👤</span>
-                    </div>
-                    <div id="container">
-                    </div>
-                </div>
-            </div>*/
         );
     }
 }

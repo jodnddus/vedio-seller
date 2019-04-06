@@ -2,12 +2,3 @@ img {
     width: 100%;
     margin: 1px;
 }
-.videoItem {
-    width: 22%;
-    margin: 5px;
-}
-
-.videoItem h1 {
-    margin: 0;
-    font-size: 100%;
-}
