@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
-import Input from '../components/Input';
-import Button from '../components/Button';
-import axios from 'axios';
+import { Mutation } from 'react-apollo';
+import Input from './components/Input';
+import Button from './components/Button';
+import { SIGN_IN, SIGN_UP } from '../queries';
 import './style/Login.css'
 
 class Login extends Component {
@@ -10,13 +11,10 @@ class Login extends Component {
         username: '', 
         email: '', 
         password: '',
-        logined: false
     };
 
     constructor(props) {
         super(props);
-        this.signinClickListener = this.signinClickListener.bind(this);
-        this.signiupClickListener = this.signiupClickListener.bind(this);
         this.usernameChange = this.usernameChange.bind(this);
         this.emailChange = this.emailChange.bind(this);
         this.passwordChange = this.passwordChange.bind(this);
@@ -31,53 +29,6 @@ class Login extends Component {
             this.alertPanel('emailFormNotValid', '이메일이 유효하지 않음');
         }
 
-    }
-    
-    signinClickListener() {
-        console.log('Username: ' + this.state.username);
-        console.log('Email: ' + this.state.email);
-        console.log('Password: ' + this.state.password);
-
-        try {
-            axios.post('http://localhost:4000/login', {
-                username: this.state.username,
-                email: this.state.email,
-                password: this.state.password
-            }).then((res) => {
-                if(res.data === `No result`) {
-                    this.alertPanel('noneResult', '일치하는 정보가 없음');
-                } else if (res.data === `No email: ${this.state.email}`) {
-                    this.alertPanel('noneEmail', '이메일이 일치하지 않음');
-                } else if (res.data === `No password: ${this.state.password}`) {
-                    this.alertPanel('nonePassword', '비밀번호가 일치하지 않음');
-                } else {
-                    document.location.href = '/home';
-                    this.setState({logined: true});
-                }
-            });
-        } catch (error) {
-            console.log(`Error is ${error}`);
-        }
-    }
-
-    signiupClickListener() {
-        console.log('Username: ' + this.state.username);
-        console.log('Email: ' + this.state.email);
-        console.log('Password: ' + this.state.password);
-
-        try {
-            axios.post('http://localhost:4000/register', {
-                username: this.state.username,
-                email: this.state.email,
-                password: this.state.password
-            }).then((res) => {
-                console.log(res);
-            });
-        } catch (error) {
-            console.error(`Error is: ${error}`);
-        }
-
-        document.location.href = '/';
     }
 
     checkEmail(str) {
@@ -96,18 +47,6 @@ class Login extends Component {
             element.textContent = msg;
         } else if (flag === 'emailValidOrNoneInput') {
             element.style.display = 'none';
-        } else if (flag === 'noneEmail') {
-            element.classList.add('animated', 'slideInDown', 'faster');
-            element.style.display = 'flex';
-            element.textContent = msg;
-        } else if (flag === 'nonePassword') {
-            element.classList.add('animated', 'slideInDown', 'faster');
-            element.style.display = 'flex';
-            element.textContent = msg;
-        } else if (flag === 'noneResult') {
-            element.classList.add('animated', 'slideInDown', 'faster');
-            element.style.display = 'flex';
-            element.textContent = msg;
         }
     }
 
@@ -140,8 +79,24 @@ class Login extends Component {
                             <Input labelName="Password" inputType="password" inputPlaceholder="Password" onChange={this.passwordChange}/>
                         </div>
                         <div id="button">
-                            <Button value="Sign In" className="btns" handleClick={this.signinClickListener}/>
-                            <Button value="Sign Up" className="btns" handleClick={this.signiupClickListener}/>
+                            <Mutation mutation={ SIGN_IN }>
+                                {(signInUser, { data }) => (
+                                    <Button value="Sign In" className="btns" handleClick={e => {
+                                        signInUser({ variables: { username: this.state.username,
+                                                                  email: this.state.email,
+                                                                  password: this.state.password }}) 
+                                    }}/>
+                                )}
+                            </Mutation>
+                            <Mutation mutation={ SIGN_UP }>
+                                {(signUpUser, { data }) => (
+                                    <Button value="Sign Up" className="btns" handleClick={e => {
+                                        signUpUser({ variables: { username: this.state.username,
+                                                                  email: this.state.email,
+                                                                  password: this.state.password }})
+                                    }}/>
+                                )}
+                            </Mutation>
                         </div>
                     </div>
                 </div>
