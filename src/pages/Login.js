@@ -43,6 +43,12 @@ class Login extends Component {
 
         if (flag === 'emailFormNotValid') {
             element.classList.add('animated', 'slideInDown', 'faster');
+            element.style.backgroundColor = 'tomato';
+            element.style.display = 'flex';
+            element.textContent = msg;
+        } else if (flag === 'signUpSuccess') {
+            element.classList.add('animated', 'slideInDown', 'faster');
+            element.style.backgroundColor = 'green';
             element.style.display = 'flex';
             element.textContent = msg;
         } else if (flag === 'emailValidOrNoneInput') {
@@ -84,7 +90,13 @@ class Login extends Component {
                                     <Button value="Sign In" className="btns" handleClick={e => {
                                         signInUser({ variables: { username: this.state.username,
                                                                   email: this.state.email,
-                                                                  password: this.state.password }}) 
+                                                                  password: this.state.password }}).then(res => {
+                                                                        if(res.data.signInUser.username === this.state.username) {
+                                                                            localStorage.setItem("userData", JSON.stringify(this.state));
+                                                                            console.log(localStorage.getItem("userData"));
+                                                                            document.location.href = '/home';
+                                                                        }
+                                                                  });
                                     }}/>
                                 )}
                             </Mutation>
@@ -93,7 +105,11 @@ class Login extends Component {
                                     <Button value="Sign Up" className="btns" handleClick={e => {
                                         signUpUser({ variables: { username: this.state.username,
                                                                   email: this.state.email,
-                                                                  password: this.state.password }})
+                                                                  password: this.state.password }}).then(res => {
+                                                                      if(res.data.signUpUser.username === this.state.username) {
+                                                                          this.alertPanel('signUpSuccess', '회원가입 성공');
+                                                                      }
+                                                                  })
                                     }}/>
                                 )}
                             </Mutation>
