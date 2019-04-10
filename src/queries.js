@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 
 export const GET_MOVIES = gql`
     query {
-        videos(limit: 50) {
+        getvideos(limit: 50) {
         id
         title
         rating
@@ -10,6 +10,26 @@ export const GET_MOVIES = gql`
         medium_cover_image
     }
 }
+`;
+
+export const GET_MOVIE_BYID = gql`
+    query getVideoById($id: Int!) {
+        getVideoById(id: $id) {
+            id
+            title
+            rating
+            genres
+            description_intro
+        }
+    }
+`;
+
+export const GET_MOVIE_BYSG = gql`
+    query getVideoBySuggestion($id: Int!) {
+        getVideoBySuggestion(id: $id) {
+            
+        }
+    }
 `;
 
 export const SIGN_UP = gql`
