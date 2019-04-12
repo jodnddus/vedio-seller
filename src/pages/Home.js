@@ -1,19 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Video from './components/Video';
 import { Query } from 'react-apollo';
-import { GET_MOVIES } from '../queries';
+import { GET_VIDEOS } from '../queries';
 import './style/Home.css';
 
-export const Home = () => {
+const Home = () => {
     return (
         <div>
-            <div id="header">VIDEO-SELLER<span role="img" aria-label="film"> 🎬</span></div>
+            <div id="header">
+                <span role="img" aria-label="film">VIDEO-SELLER 🎬</span>
+                <Link to={'/profile'}>
+                    <span role="img" aria-label="profile">🤷‍</span>
+                </Link>
+            </div>
             <div id="container">
-                <Query query={GET_MOVIES}>{({ loading, data, error }) => {
+                <Query query={GET_VIDEOS}>{({ loading, data, error }) => {
                     if (loading) return <h1>LOADING</h1>
                     if (error) return <h1>ERROR</h1>
                     return (
-                        data.videos.map(video => (
+                        data.getvideos.map(video => (
                             <div key={video.id} className="videoItem">
                                 <Video
                                     poster={video.medium_cover_image}
