@@ -1,35 +1,28 @@
 import gql from 'graphql-tag';
 
-export const GET_MOVIES = gql`
+export const GET_VIDEOS = gql`
     query {
         getvideos(limit: 50) {
-        id
-        title
-        rating
-        genres
-        medium_cover_image
+            id
+            title
+            rating
+            genres
+            medium_cover_image
+        }
     }
-}
 `;
 
-export const GET_MOVIE_BYID = gql`
-    query getVideoById($id: Int!) {
+export const GET_VIDEO = gql`
+    query getVideoById($id: Float!){
         getVideoById(id: $id) {
             id
             title
             rating
             genres
             description_intro
+            medium_cover_image
         }
-    }
-`;
-
-export const GET_MOVIE_BYSG = gql`
-    query getVideoBySuggestion($id: Int!) {
-        getVideoBySuggestion(id: $id) {
-            
-        }
-    }
+    }   
 `;
 
 export const SIGN_UP = gql`
