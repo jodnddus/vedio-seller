@@ -18,7 +18,7 @@ const Videos = ({
                         {data.getVideoById.title}<br />
                         {data.getVideoById.rating}<br />
                         {data.getVideoById.genres}<br />
-                        {data.getVideoById.description_intro}description_intro
+                        {data.getVideoById.description_intro}
                         <img src={data.getVideoById.medium_cover_image} alt="poster"/>
                     </React.Fragment>
                 );

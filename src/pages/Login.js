@@ -8,8 +8,8 @@ import './style/Login.css'
 
 class Login extends Component {
     state = {
-        username: '', 
-        email: '', 
+        username: '',
+        email: '',
         password: '',
     };
 
@@ -21,11 +21,11 @@ class Login extends Component {
     }
 
     componentDidUpdate() {
-        if(this.state.email === '') {                               //없을 때
+        if (this.state.email === '') {                               //없을 때
             this.alertPanel('emailValidOrNoneInput');
-        } else if(this.checkEmail(this.state.email) === true) {     //유효 할 때
+        } else if (this.checkEmail(this.state.email) === true) {     //유효 할 때
             this.alertPanel('emailValidOrNoneInput');
-        } else if(this.checkEmail(this.state.email) === false) {    //이메일이 유효하지 않을 때
+        } else if (this.checkEmail(this.state.email) === false) {    //이메일이 유효하지 않을 때
             this.alertPanel('emailFormNotValid', '이메일이 유효하지 않음');
         }
 
@@ -58,15 +58,15 @@ class Login extends Component {
 
     //state 세팅 함수
     usernameChange(event) {
-        this.setState({username: event.target.value})
+        this.setState({ username: event.target.value })
     }
 
     emailChange(event) {
-        this.setState({email: event.target.value})
+        this.setState({ email: event.target.value })
     }
 
     passwordChange(event) {
-        this.setState({password: event.target.value})
+        this.setState({ password: event.target.value })
     }
 
     render() {
@@ -80,44 +80,42 @@ class Login extends Component {
                     <div className="LoginPanel">
                         <h1>VIDEO-SELLER <span role="img" aria-label="movie">🎬</span></h1>
                         <div id="input">
-                            <Input labelName="Email" inputType="email" inputPlaceholder="Email" onChange={this.emailChange}/>
-                            <Input labelName="Username" inputType="text" inputPlaceholder="Username" onChange={this.usernameChange}/>
-                            <Input labelName="Password" inputType="password" inputPlaceholder="Password" onChange={this.passwordChange}/>
+                            <Input labelName="Email" inputType="email" inputPlaceholder="Email" onChange={this.emailChange} />
+                            <Input labelName="Username" inputType="text" inputPlaceholder="Username" onChange={this.usernameChange} />
+                            <Input labelName="Password" inputType="password" inputPlaceholder="Password" onChange={this.passwordChange} />
                         </div>
                         <div id="button">
-                            <Mutation mutation={ SIGN_IN }>
+                            <Mutation mutation={SIGN_IN}>
                                 {(signInUser, { data }) => (
                                     <Button value="Sign In" className="btns" handleClick={e => {
-                                        signInUser({ variables: { username: this.state.username,
-                                                                  email: this.state.email,
-                                                                  password: this.state.password }}).then(res => {
-                                                                        if(res.data.signInUser.username === this.state.username) {
-                                                                            localStorage.setItem("userData", JSON.stringify(this.state));
-                                                                            console.log(localStorage.getItem("userData"));
-                                                                            document.location.href = '/home';
-                                                                        }
-                                                                  });
-                                    }}/>
+                                        signInUser({ variables: { username: this.state.username, email: this.state.email, password: this.state.password } })
+                                            .then(res => {
+                                                if (res.data.signInUser.username === this.state.username) {
+                                                    localStorage.setItem("userData", JSON.stringify(this.state));
+                                                    console.log(localStorage.getItem("userData"));
+                                                    document.location.href = '/home';
+                                                }
+                                            });
+                                    }} />
                                 )}
                             </Mutation>
-                            <Mutation mutation={ SIGN_UP }>
+                            <Mutation mutation={SIGN_UP}>
                                 {(signUpUser, { data }) => (
                                     <Button value="Sign Up" className="btns" handleClick={e => {
-                                        signUpUser({ variables: { username: this.state.username,
-                                                                  email: this.state.email,
-                                                                  password: this.state.password }}).then(res => {
-                                                                      if(res.data.signUpUser.username === this.state.username) {
-                                                                          this.alertPanel('signUpSuccess', '회원가입 성공');
-                                                                      }
-                                                                  })
-                                    }}/>
+                                        signUpUser({ variables: { username: this.state.username, email: this.state.email, password: this.state.password } })
+                                            .then(res => {
+                                                if (res.data.signUpUser.username === this.state.username) {
+                                                    this.alertPanel('signUpSuccess', '회원가입 성공');
+                                                }
+                                            });
+                                    }} />
                                 )}
                             </Mutation>
                         </div>
                     </div>
                 </div>
             </div>
-        );  
+        );
     }
 }
 
