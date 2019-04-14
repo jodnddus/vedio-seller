@@ -1,0 +1,21 @@
+body {
+    text-align: left;
+}
+#videoHeader {
+    display: flex;
+    flex-direction: column;
+}
+#videoHeader p {
+    margin: 0px;
+}
+#videoMain {
+    display: flex;
+    flex-direction: row;
+}
+.genres {
+    font-family: serif;
+    font-style: italic;
+}
+img {
+    width: 230px; 
+}

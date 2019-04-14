@@ -1,6 +1,7 @@
 import React from 'react';
 import { Query } from 'react-apollo';
 import { GET_VIDEO } from '../queries';
+import './style/Videos.css'
 
 const Videos = ({
     match: {
@@ -14,12 +15,20 @@ const Videos = ({
                 if (loading) return <h1>{videoId} is loading...</h1>;
                 if (error) return `Error: ${error} videoId: ${videoId} videoId's Type: ${typeof(videoId)}`;
                 return (
-                    <React.Fragment> 
-                        {data.getVideoById.title}<br />
-                        {data.getVideoById.rating}<br />
-                        {data.getVideoById.genres}<br />
-                        {data.getVideoById.description_intro}
-                        <img src={data.getVideoById.medium_cover_image} alt="poster"/>
+                    <React.Fragment>
+                        <div id="videoHeader">
+                            <h1>{data.getVideoById.title}</h1>
+                            <p><span role="img" aria-label="star">⭐️</span>{data.getVideoById.rating}</p>
+                            <p className="genres">{data.getVideoById.genres.map(genres => <p>{genres},</p>)}</p>
+                        </div>
+                        <br />
+                        <div id="videoMain">
+                            {data.getVideoById.description_intro}
+                            <img src={data.getVideoById.medium_cover_image} alt="poster"/>
+                        </div>
+                        <div>
+                            <h1>Suggestions</h1>
+                        </div>
                     </React.Fragment>
                 );
             }}
