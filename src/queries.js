@@ -22,6 +22,11 @@ export const GET_VIDEO = gql`
             description_intro
             medium_cover_image
         }
+        getVideoSuggest(id: $id) {
+            id
+            title
+            medium_cover_image
+        }
     }   
 `;
 

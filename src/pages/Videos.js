@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Query } from 'react-apollo';
 import { GET_VIDEO } from '../queries';
+import { Video } from './components/Video'
 import './style/Videos.css'
 
 const Videos = ({
@@ -28,6 +30,16 @@ const Videos = ({
                         </div>
                         <div>
                             <h1>Suggestions</h1>
+                            <div id="suggest">
+                                {data.getVideoSuggest.map(video => (
+                                    <Link to={`/videos/${video.id}`}>
+                                        <div>
+                                            <img src={video.medium_cover_image} alt={"hello jpg"}/>
+                                            <p>{video.title}</p>
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
                         </div>
                     </React.Fragment>
                 );

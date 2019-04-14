@@ -19,3 +19,6 @@ body {
 img {
     width: 230px; 
 }
+#suggest {
+    display: flex;
+}
