@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App matches snapshot 1`] = `
+<div>
+  <div
+    id="loginPage"
+  >
+    <div
+      className="alertPanel"
+    />
+    <div
+      className="LoginPanel"
+    >
+      <h1>
+        VIDEO-SELLER 
+        <span
+          aria-label="movie"
+          role="img"
+        >
+          🎬
+        </span>
+      </h1>
+      <div
+        id="input"
+      >
+        <div
+          className="inputs"
+        >
+          <label>
+            Email
+          </label>
+          <br />
+          <input
+            className="inputlabels"
+            onChange={[Function]}
+            placeholder="Email"
+            type="email"
+          />
+        </div>
+        <div
+          className="inputs"
+        >
+          <label>
+            Username
+          </label>
+          <br />
+          <input
+            className="inputlabels"
+            onChange={[Function]}
+            placeholder="Username"
+            type="text"
+          />
+        </div>
+        <div
+          className="inputs"
+        >
+          <label>
+            Password
+          </label>
+          <br />
+          <input
+            className="inputlabels"
+            onChange={[Function]}
+            placeholder="Password"
+            type="password"
+          />
+        </div>
+      </div>
+      <div
+        id="button"
+      >
+        <button
+          className="buttons"
+          onClick={[Function]}
+        >
+          Sign In
+        </button>
+        <button
+          className="buttons"
+          onClick={[Function]}
+        >
+          Sign Up
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
