@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { Mutation } from 'react-apollo';
 import Input from './components/Input';
 import Button from './components/Button';
-import { SIGN_IN, SIGN_UP } from '../queries';
+import { SIGN_IN, SIGN_UP } from '../queryMutation';
 import './style/Login.css'
 
 class Login extends Component {
@@ -28,7 +28,6 @@ class Login extends Component {
         } else if (this.checkEmail(this.state.email) === false) {    //이메일이 유효하지 않을 때
             this.alertPanel('emailFormNotValid', '이메일이 유효하지 않음');
         }
-
     }
 
     checkEmail(str) {
