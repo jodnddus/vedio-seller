@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 
 export const GET_VIDEOS = gql`
     query {
-        getvideos(limit: 50) {
+        getvideosByLimit(limit: 50) {
             id
             title
             rating
@@ -22,7 +22,7 @@ export const GET_VIDEO = gql`
             description_intro
             medium_cover_image
         }
-        getVideoSuggest(id: $id) {
+        getVideoBySuggest(id: $id) {
             id
             title
             medium_cover_image
@@ -44,5 +44,11 @@ export const SIGN_IN = gql`
         signInUser(username: $username, email: $email, password: $password) {
             username
         }
+    }
+`;
+
+export const ADD_STAR_VIDEO = gql`
+    mutation addStarVideo($videoId: Float!, $username: String!) {
+        addStarVideo(videoId: $videoId, username: $username)
     }
 `;
