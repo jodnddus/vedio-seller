@@ -52,3 +52,11 @@ export const ADD_STAR_VIDEO = gql`
         addStarVideo(videoId: $videoId, username: $username)
     }
 `;
+
+export const GET_USER_BY_USERNAME = gql`
+    query getUserByUsername($username: String!){
+        getUserByUsername(username: $username){
+            videoId
+        }
+    }
+`;
