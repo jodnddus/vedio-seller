@@ -10,10 +10,11 @@ const Videos = ({
     }
 }) => {
     var id = parseFloat(videoId);
+    console.log(typeof(id));
     var userData = JSON.parse(localStorage.getItem('userData'));
     var username = userData.username;
     return (
-        <Query query={GET_VIDEO} variables={{id}}>
+        <Query query={GET_VIDEO} variables={{id: id}}>
             {({ loading, error, data }) => {
                 if (loading) return <h1>{videoId} is loading...</h1>;
                 if (error) return `Error: ${error} videoId: ${videoId} videoId's Type: ${typeof(videoId)}`;

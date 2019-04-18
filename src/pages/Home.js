@@ -15,21 +15,22 @@ const Home = () => {
                 </Link>
             </div>
             <div id="container">
-                <Query query={GET_VIDEOS}>{({ loading, data, error }) => {
-                    if (loading) return <h1>LOADING</h1>
-                    if (error) return <h1>ERROR</h1>
-                    return (
-                        data.getvideosByLimit.map(video => (
-                            <div key={video.id} className="videoItem">
-                                <Video
-                                    poster={video.medium_cover_image}
-                                    title={video.title}
-                                    id={video.id}
-                                />
-                            </div>
-                        ))
-                    );
-                }}</Query>
+                <Query query={GET_VIDEOS}>
+                    {({ loading, data, error }) => {
+                        if (loading) return <h1>LOADING</h1>
+                        if (error) return <h1>ERROR</h1>
+                        return (
+                            data.getvideosByLimit.map(video => (
+                                <div key={video.id} className="videoItem">
+                                    <Video
+                                        poster={video.medium_cover_image}
+                                        title={video.title}
+                                        id={video.id}
+                                    />
+                                </div>
+                            ))
+                        );
+                    }}</Query>
             </div>
         </div>
     );
