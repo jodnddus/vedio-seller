@@ -6,7 +6,7 @@ const Video = ({poster, title, id}) => {
     return (
         <Link to={`/videos/${id}`}>
             <img src={poster} alt="hello jpg" />
-            <h1>{title}</h1>
+            <h1 id="title">{title}</h1>
         </Link>
     );
 }
