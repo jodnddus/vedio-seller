@@ -1,0 +1,14 @@
+#profile {
+    display: flex;
+    flex-direction: column;
+}
+
+#info {
+
+}
+
+#myvideos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
