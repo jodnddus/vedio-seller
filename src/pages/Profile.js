@@ -31,8 +31,10 @@ class Profile extends Component {
             <div id="profile">
                 <div id="info">
                     <h1>{this.state.username}'s Profile</h1>
+                    <hr />
                     <h1>Info</h1>
-                    {this.state.email}
+                    Username: {this.state.username} <br/>
+                    Email: {this.state.email}
                 </div>
                 <h1>My Videos</h1>
                 <Query query={GET_USER_BY_USERNAME} variables={{ username }} >

@@ -101,12 +101,14 @@ class Login extends Component {
                             <Mutation mutation={SIGN_UP}>
                                 {(signUpUser, { data }) => (
                                     <Button value="Sign Up" className="btns" handleClick={e => {
-                                        signUpUser({ variables: { username: this.state.username, email: this.state.email, password: this.state.password } })
-                                            .then(res => {
-                                                if (res.data.signUpUser.username === this.state.username) {
-                                                    this.alertPanel('signUpSuccess', '회원가입 성공');
-                                                }
-                                            });
+                                        if (this.state.username !== "" | this.state.password !== "" | this.state.email !== "") {
+                                            signUpUser({ variables: { username: this.state.username, email: this.state.email, password: this.state.password } })
+                                                .then(res => {
+                                                    if (res.data.signUpUser.username === this.state.username) {
+                                                        this.alertPanel('signUpSuccess', '회원가입 성공');
+                                                    }
+                                                });
+                                        }
                                     }} />
                                 )}
                             </Mutation>

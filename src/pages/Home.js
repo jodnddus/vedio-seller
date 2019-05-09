@@ -11,7 +11,7 @@ const Home = () => {
             <div id="header">
                 <span role="img" aria-label="film">VIDEO-SHARER 🎬</span>
                 <Link to={'/profile'}>
-                    <span role="img" aria-label="profile">🤷‍</span>
+                    <span role="img" aria-label="profile">🌝</span>
                 </Link>
             </div>
             <div id="container">

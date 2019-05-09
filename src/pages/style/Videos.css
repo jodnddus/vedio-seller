@@ -1,16 +1,21 @@
 body {
     text-align: left;
 }
-#videoHeader {
+#headerInfo {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
-#videoHeader p {
+#headerInfo p {
     margin: 0px;
+}
+#videoHeader {
+    justify-content: space-between;
 }
 #videoMain {
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 .genres {
     font-family: serif;
@@ -21,4 +26,11 @@ img {
 }
 #suggest {
     display: flex;
+    flex-wrap: wrap;
+}
+#videoDesc {
+    font-size: 1.5rem;
+}
+#like {
+    width: 200px;
 }
