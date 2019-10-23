@@ -5,5 +5,6 @@ notion 👉 [To-dos](https://www.notion.so/vedioseller/To-dos-8fb8ccf964664ec7b6
 
 # video-sharer-server
 themoviedb api를 이용해서 graphql 서버를 제작함
+클라이언트 실행 전, 서버를 클론받아 실행해야 함.
 
 [link](https://github.com/jodnddus/video-sharer-server)
